@@ -189,6 +189,7 @@
         <div class="gallery-item scroll-animate" style="background-image:url('irmus1.jpeg')"></div>
         <div class="gallery-item scroll-animate" style="background-image:url('irmus2.jpeg')"></div>
         <div class="gallery-item scroll-animate" style="background-image:url('irmus3.jpeg')"></div>
+      </div>
     </div>
   </section>
 
@@ -197,7 +198,7 @@
     <div class="container scroll-animate">
       <h2 class="section-title">Kontak</h2>
       <p class="section-desc">
-        -
+        Silakan hubungi kami untuk informasi lebih lanjut atau kerja sama kegiatan.
       </p>
 
       <div class="contact-grid">
@@ -223,10 +224,15 @@
         </div>
       </div>
 
-      <form class="contact-form scroll-animate">
-        <input type="text" placeholder="Nama Anda" required>
-        <input type="email" placeholder="Email Anda" required>
-        <textarea placeholder="Pesan Anda..." required></textarea>
+      <!-- FORMSPREE FORM -->
+      <form class="contact-form scroll-animate"
+            action="https://formspree.io/f/mykdjpvg"
+            method="POST">
+
+        <input type="text" name="nama" placeholder="Nama Anda" required>
+        <input type="email" name="email" placeholder="Email Anda" required>
+        <textarea name="pesan" placeholder="Pesan Anda..." required></textarea>
+
         <button type="submit" class="btn-primary">Kirim Pesan</button>
       </form>
     </div>
