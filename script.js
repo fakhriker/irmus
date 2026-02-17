@@ -1,17 +1,23 @@
+// ==============================
 // ELEMENT
+// ==============================
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
 const header = document.getElementById("header");
 const themeBtn = document.getElementById("themeBtn");
 const backTop = document.getElementById("backTop");
 
+// ==============================
 // MENU TOGGLE
+// ==============================
 menuToggle.addEventListener("click", () => {
   navLinks.classList.toggle("active");
   menuToggle.classList.toggle("active");
 });
 
-// AUTO CLOSE MENU
+// ==============================
+// AUTO CLOSE MENU (MOBILE)
+// ==============================
 document.querySelectorAll(".nav-links a").forEach(link => {
   link.addEventListener("click", () => {
     navLinks.classList.remove("active");
@@ -19,7 +25,9 @@ document.querySelectorAll(".nav-links a").forEach(link => {
   });
 });
 
+// ==============================
 // SCROLL ANIMATION
+// ==============================
 const scrollElements = document.querySelectorAll(".scroll-animate");
 
 const elementInView = (el, dividend = 1.15) => {
@@ -37,7 +45,35 @@ const handleScrollAnimation = () => {
   });
 };
 
+// ==============================
+// ACTIVE MENU
+// ==============================
+const sections = document.querySelectorAll("section");
+const navItems = document.querySelectorAll(".nav-item");
+
+function setActiveNav() {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+
+    if (scrollY >= sectionTop - 150) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navItems.forEach(item => {
+    item.classList.remove("active");
+    if (item.getAttribute("href") === "#" + current) {
+      item.classList.add("active");
+    }
+  });
+}
+
+// ==============================
 // NAVBAR SCROLL EFFECT + BACKTOP
+// ==============================
 window.addEventListener("scroll", () => {
   handleScrollAnimation();
 
@@ -58,8 +94,11 @@ window.addEventListener("scroll", () => {
 
 // RUN FIRST
 handleScrollAnimation();
+setActiveNav();
 
+// ==============================
 // BACK TOP CLICK
+// ==============================
 backTop.addEventListener("click", () => {
   window.scrollTo({
     top: 0,
@@ -67,7 +106,9 @@ backTop.addEventListener("click", () => {
   });
 });
 
+// ==============================
 // DARK MODE (SAVE TO LOCAL STORAGE)
+// ==============================
 function setTheme(mode) {
   if (mode === "dark") {
     document.body.classList.add("dark-mode");
@@ -93,39 +134,20 @@ if (savedTheme) {
   setTheme(savedTheme);
 }
 
-// ACTIVE MENU
-const sections = document.querySelectorAll("section");
-const navItems = document.querySelectorAll(".nav-item");
+// ==============================
+// FORM SUBMIT (FORMSPREE READY)
+// ==============================
+const form = document.querySelector(".contact-form");
 
-function setActiveNav() {
-  let current = "";
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-
-    if (scrollY >= sectionTop - 120) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  navItems.forEach(item => {
-    item.classList.remove("active");
-    if (item.getAttribute("href") === "#" + current) {
-      item.classList.add("active");
-    }
+if (form) {
+  form.addEventListener("submit", () => {
+    alert("Pesan sedang dikirim... Mohon tunggu 😊");
   });
 }
 
-// FORM SUBMIT DEMO
-const form = document.querySelector(".contact-form");
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  alert("Pesan berhasil dikirim! (Demo Website IRMUS AL-ISRA Kaliwulu)");
-  form.reset();
-});
-
+// ==============================
 // LIGHTBOX GALLERY
+// ==============================
 const galleryItems = document.querySelectorAll(".gallery-item");
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightboxImg");
@@ -134,6 +156,9 @@ const closeLightbox = document.getElementById("closeLightbox");
 galleryItems.forEach(item => {
   item.addEventListener("click", () => {
     const bg = item.style.backgroundImage;
+
+    if (!bg) return;
+
     const url = bg.slice(5, -2);
 
     lightboxImg.src = url;
