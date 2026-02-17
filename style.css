@@ -145,7 +145,7 @@ body.dark-mode .header {
 .hero {
   height: 100vh;
   background: linear-gradient(to right, rgba(10, 88, 202, 0.8), rgba(0, 0, 0, 0.75)),
-    url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80");
+    url("irmus4.jpeg");
   background-size: cover;
   background-position: center;
   display: flex;
