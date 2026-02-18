@@ -6,6 +6,11 @@
   scroll-behavior: smooth;
 }
 
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 :root {
   --bg: #f5f6fa;
   --text: #111;
@@ -29,30 +34,39 @@ body.dark-mode {
   --shadow: rgba(255, 255, 255, 0.06);
 }
 
-/* SPLASH SCREEN LOGO (WA STYLE) */
+/* SPLASH SCREEN */
 .splash {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background: #ffffff;
+  height: 100vh;
+  background: #0f172a;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 99999;
+  z-index: 999999;
   transition: 0.6s ease;
 }
 
-body.dark-mode .splash {
-  background: #0b1220;
+.splash-logo {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: rgba(255,255,255,0.08);
+  padding: 15px;
+  animation: splashPulse 1.2s infinite;
 }
 
-.splash-logo {
-  width: 130px;
-  height: 130px;
-  object-fit: contain;
-  animation: splashPulse 1.4s infinite;
+.splash-text {
+  margin-top: 15px;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 1px;
+  opacity: 0.9;
 }
 
 @keyframes splashPulse {
@@ -61,7 +75,7 @@ body.dark-mode .splash {
     opacity: 0.85;
   }
   50% {
-    transform: scale(1.15);
+    transform: scale(1.12);
     opacity: 1;
   }
 }
@@ -94,6 +108,7 @@ body.dark-mode .header {
 }
 
 .navbar {
+  width: 100%;
   max-width: 1100px;
   margin: auto;
   padding: 15px 20px;
@@ -111,7 +126,7 @@ body.dark-mode .header {
 
 .logo span {
   font-size: 12px;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 /* NAV LINKS */
@@ -190,19 +205,21 @@ body.dark-mode .header {
 
 /* HERO */
 .hero {
-  height: 100vh;
-  background: linear-gradient(to right, rgba(10, 88, 202, 0.8), rgba(0, 0, 0, 0.75)),
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(to right, rgba(10, 88, 202, 0.85), rgba(0, 0, 0, 0.75)),
     url("irmus1.jpeg");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 80px 20px;
+  padding: 110px 20px 70px;
 }
 
 .hero-content {
-  max-width: 800px;
+  max-width: 850px;
   text-align: center;
   color: white;
 }
@@ -215,7 +232,7 @@ body.dark-mode .header {
 .hero-content p {
   font-size: 18px;
   margin-bottom: 25px;
-  opacity: 0.9;
+  opacity: 0.92;
 }
 
 .hero-btn {
@@ -231,7 +248,7 @@ body.dark-mode .header {
   background: var(--primary);
   color: white;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 10px;
   transition: 0.3s;
   font-weight: 600;
   border: none;
@@ -248,13 +265,14 @@ body.dark-mode .header {
   border: 2px solid white;
   color: white;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: 600;
   transition: 0.3s;
 }
 
 .btn-outline:hover {
-  background: rgba(255,255,255,0.2);
+  background: white;
+  color: black;
 }
 
 /* SECTION */
@@ -263,6 +281,7 @@ body.dark-mode .header {
 }
 
 .container {
+  width: 100%;
   max-width: 1100px;
   margin: auto;
 }
@@ -279,6 +298,7 @@ body.dark-mode .header {
   margin: auto;
   margin-bottom: 40px;
   opacity: 0.85;
+  line-height: 1.5;
 }
 
 /* GRID */
@@ -300,7 +320,7 @@ body.dark-mode .header {
 .card {
   background: var(--card);
   padding: 22px;
-  border-radius: 12px;
+  border-radius: 14px;
   box-shadow: 0px 6px 18px var(--shadow);
   transition: 0.3s;
 }
@@ -320,12 +340,17 @@ body.dark-mode .header {
   color: white;
 }
 
+.misi-list {
+  padding-left: 18px;
+  line-height: 1.7;
+}
+
 /* PROGRAM */
 .program-card {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255,255,255,0.12);
   padding: 22px;
-  border-radius: 12px;
+  border-radius: 14px;
   transition: 0.3s;
 }
 
@@ -343,7 +368,7 @@ body.dark-mode .header {
 
 .gallery-item {
   height: 180px;
-  border-radius: 12px;
+  border-radius: 14px;
   background-size: cover;
   background-position: center;
   cursor: pointer;
@@ -363,7 +388,7 @@ body.dark-mode .header {
 }
 
 .ig-link:hover {
-  color: var(--primary);
+  color: #60a5fa;
   text-decoration: underline;
 }
 
@@ -378,7 +403,7 @@ body.dark-mode .header {
 .contact-form input,
 .contact-form textarea {
   padding: 12px;
-  border-radius: 10px;
+  border-radius: 12px;
   border: none;
   outline: none;
   font-size: 16px;
@@ -390,8 +415,10 @@ body.dark-mode .header {
 }
 
 .form-status {
-  margin-top: 10px;
+  margin-top: 5px;
   font-weight: 600;
+  text-align: center;
+  font-size: 15px;
 }
 
 /* FOOTER */
@@ -438,8 +465,8 @@ body.dark-mode .header {
 }
 
 .lightbox img {
-  max-width: 80%;
-  max-height: 80%;
+  max-width: 85%;
+  max-height: 85%;
   border-radius: 12px;
 }
 
@@ -482,7 +509,7 @@ body.dark-mode .header {
 @media (max-width: 700px) {
   .nav-links {
     position: absolute;
-    top: 65px;
+    top: 70px;
     right: 0;
     background: rgba(255,255,255,0.95);
     width: 100%;
@@ -507,15 +534,22 @@ body.dark-mode .header {
   .about-grid,
   .division-grid,
   .program-grid,
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .vision-grid {
-    grid-template-columns: 1fr;
-  }
-
+  .contact-grid,
+  .vision-grid,
   .gallery-grid {
     grid-template-columns: 1fr;
   }
+
+  .hero-content h1 {
+    font-size: 28px;
   }
+
+  .hero-content p {
+    font-size: 15px;
+  }
+
+  .splash-logo {
+    width: 140px;
+    height: 140px;
+  }
+}
