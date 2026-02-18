@@ -1,4 +1,4 @@
-// SPLASH SCREEN LOGO DELAY
+// SPLASH SCREEN
 window.addEventListener("load", () => {
   const splash = document.getElementById("splash");
 
@@ -9,7 +9,7 @@ window.addEventListener("load", () => {
       splash.style.display = "none";
     }, 600);
 
-  }, 3000); // 3000 = 3 detik (ubah 2000-4000)
+  }, 2500);
 });
 
 // ELEMENT
@@ -81,7 +81,7 @@ backTop.addEventListener("click", () => {
   });
 });
 
-// DARK MODE (SAVE TO LOCAL STORAGE)
+// DARK MODE
 function setTheme(mode) {
   if (mode === "dark") {
     document.body.classList.add("dark-mode");
@@ -116,9 +116,7 @@ function setActiveNav() {
 
   sections.forEach(section => {
     const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-
-    if (scrollY >= sectionTop - 120) {
+    if (scrollY >= sectionTop - 150) {
       current = section.getAttribute("id");
     }
   });
@@ -131,7 +129,7 @@ function setActiveNav() {
   });
 }
 
-// LIGHTBOX GALLERY
+// LIGHTBOX
 const galleryItems = document.querySelectorAll(".gallery-item");
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightboxImg");
@@ -157,7 +155,7 @@ lightbox.addEventListener("click", (e) => {
   }
 });
 
-// FORMSPREE SUBMIT (TIDAK PINDAH HALAMAN + SUBJECT EMAIL UNIK)
+// FORMSPREE SUBMIT (NO REDIRECT)
 const form = document.querySelector(".contact-form");
 const formStatus = document.getElementById("formStatus");
 const submitBtn = document.getElementById("submitBtn");
@@ -170,9 +168,8 @@ form.addEventListener("submit", async (e) => {
 
   const formData = new FormData(form);
 
-  // SUBJECT EMAIL BIAR GA NUMPUK
   const nama = form.querySelector('input[name="nama"]').value;
-  formData.append("_subject", `📩 Pesan Baru dari ${nama} (IRMUS AL-ISRA Kaliwulu)`);
+  formData.append("_subject", `📩 Pesan Baru dari ${nama} (IRMUS AL-ISRA)`);
 
   try {
     const response = await fetch(form.action, {
@@ -190,7 +187,7 @@ form.addEventListener("submit", async (e) => {
       formStatus.textContent = "❌ Pesan gagal dikirim. Coba lagi.";
     }
   } catch (error) {
-    formStatus.textContent = "⚠️ Error koneksi / server. Coba lagi.";
+    formStatus.textContent = "⚠️ Error koneksi. Coba lagi.";
   }
 
   submitBtn.disabled = false;
