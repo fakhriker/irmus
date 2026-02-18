@@ -1,3 +1,17 @@
+// SPLASH SCREEN LOGO DELAY
+window.addEventListener("load", () => {
+  const splash = document.getElementById("splash");
+
+  setTimeout(() => {
+    splash.classList.add("hide");
+
+    setTimeout(() => {
+      splash.style.display = "none";
+    }, 600);
+
+  }, 3000); // 3000 = 3 detik (ubah 2000-4000)
+});
+
 // ELEMENT
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
